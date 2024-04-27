@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>BuhleAllen Ludo</title>
+  </head>
+  <body>
+    <div id="chooseNumPlyers" class="page chooseNumPlyers">
+      <div class="chooseNumOfPlayers">
+        <div class="numPlayerTitlePg">
+          <h1>NUMBER</h1>
+          <h1>OF PLAYERS</h1>
+        </div>
+        <div class="chooseNum">
+          <div class="optContainer">
+            <div class="option">
+              <input
+                type="radio"
+                name="numPlayers"
+                id="twoP"
+                value="2"
+                checked
+              />
+              <label for="twoP"
+                ><span class="checkmark numCheck">X</span>
+                <span class="radioCheckNum numCheck">2</span>
+              </label>
+            </div>
+            <p>TWO</p>
+          </div>
+          <div class="optContainer">
+            <div class="option">
+              <input type="radio" name="numPlayers" id="threeP" value="3" />
+              <label for="threeP"
+                ><span class="checkmark numCheck">X</span
+                ><span class="radioCheckNum numCheck">3</span></label
+              >
+            </div>
+            <p>THREE</p>
+          </div>
+          <div class="optContainer">
+            <div class="option">
+              <input type="radio" name="numPlayers" id="fourP" value="4" />
+              <label for="fourP"
+                ><span class="checkmark numCheck">X</span>
+                <span class="radioCheckNum numCheck">4</span></label
+              >
+            </div>
+            <p>FOUR</p>
+          </div>
+        </div>
+        <div class="submit" id="numPlayersPgSubmit">Play</div>
+      </div>
+
+      <div id="choosePlayerColor" class="page choosePlayerColor"></div>
+    </div>
+
+    <div class="winnerPage page" id="winnerPage">
+      <div class="wpContent">
+        <h1 id="winner1">Player <span id="winner1"></span> won</h1>
+        <button id="wpNewgame">New Game</button>
+      </div>
+    </div>
+
+    <div id="gamePage">
+      <div id="gameBackbtn"><span class="gameBackbtn">&nbsp;</span></div>
+      <canvas id="gameBG"></canvas>
+      <div class="diceContainer">
+        <div class="dice" id="dice3" dice-num="3">
+          <div class="dot1 dot">&nbsp;</div>
+          <div class="dot2 dot">&nbsp;</div>
+          <div class="dot3 dot">&nbsp;</div>
+          <div class="dot4 dot">&nbsp;</div>
+          <div class="dot5 dot">&nbsp;</div>
+          <div class="dot6 dot">&nbsp;</div>
+        </div>
+        <div class="dice" id="dice2" dice-num="2">
+          <div class="dot1 dot">&nbsp;</div>
+          <div class="dot2 dot">&nbsp;</div>
+          <div class="dot3 dot">&nbsp;</div>
+          <div class="dot4 dot">&nbsp;</div>
+          <div class="dot5 dot">&nbsp;</div>
+          <div class="dot6 dot">&nbsp;</div>
+        </div>
+      </div>
+      <canvas id="canvas"></canvas>
+      <div class="diceContainer">
+        <div class="dice" id="dice1" dice-num="1">
+          <div class="dot1 dot">&nbsp;</div>
+          <div class="dot2 dot">&nbsp;</div>
+          <div class="dot3 dot">&nbsp;</div>
+          <div class="dot4 dot">&nbsp;</div>
+          <div class="dot5 dot">&nbsp;</div>
+          <div class="dot6 dot">&nbsp;</div>
+        </div>
+        <div class="dice" id="dice4" dice-num="4">
+          <div class="dot1 dot">&nbsp;</div>
+          <div class="dot2 dot">&nbsp;</div>
+          <div class="dot3 dot">&nbsp;</div>
+          <div class="dot4 dot">&nbsp;</div>
+          <div class="dot5 dot">&nbsp;</div>
+          <div class="dot6 dot">&nbsp;</div>
+        </div>
+      </div>
+    </div>
+    <script src="./js/index.js" type="module"></script>
+  </body>
+</html>

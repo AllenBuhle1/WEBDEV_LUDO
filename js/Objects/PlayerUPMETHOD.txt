@@ -1,0 +1,69 @@
+let donePosUpdate = false;
+    if (!this.isHome) {
+      if (activePlayer === this.playerNum) {
+        if (this.currentPos === null) {
+          //Checking Condition to move piece from base position to start position
+          if (dice === 6) {
+            this.currentPos = this.startPos;
+            if (!donePosUpdate) {
+              this.updateLoc(this.currentPos);
+              donePosUpdate = true;
+              setIsDiceRoll(STATE.DICE_NOT_ROLLED);
+            }
+          } else if (dice !== 6) {
+            //Making sure Piece does not move to start position if the dice is not
+            while (hasActivePieces(this.playerNum)) {
+              update(dice, activePlayer, incrActPlayer);
+            }
+          }
+        } else {
+          for (let i = 1; i <= dice; i++) {
+            if (
+              !this.isHome &&
+              HOME_POSITIONS[this.playerNum] - this.currentPos >= dice
+            ) {
+              this.currentPos += 1;
+              console.log(`My new Pos: ${this.currentPos}`);
+            }
+            // Checking If we are not in our home turning point
+            if (this.currentPos === TURNING_POINTS[this.playerNum]) {
+              this.currentPos = HOME_ENTRANCE[this.playerNum][0];
+              console.log("Pass turning point");
+              this.isOnWayHome = true;
+            }
+
+            // Checking if the dice num is not more that the left squares home
+            if (HOME_POSITIONS[this.playerNum] - this.currentPos >= dice) {
+              //Checking If Piece arrived home
+              if (this.currentPos === HOME_POSITIONS[this.playerNum]) {
+                this.isHome = true;
+                console.log(`I am home${this.playerNum}`);
+                break;
+              }
+
+              //Making sure We are within bounds
+              if (this.currentPos > 51 && !this.isOnWayHome && !this.isHome) {
+                this.currentPos = this.currentPos - 52;
+                console.log("Pos>51");
+              }
+              // checking if done updating location
+              if (!donePosUpdate) {
+                console.log("Updating Pos");
+                this.updateLoc(this.currentPos);
+              }
+              //Updating dice roll
+              setIsDiceRoll(STATE.DICE_NOT_ROLLED);
+            } else {
+              console.log(`On way Home Pos: ${this.currentPos}`);
+            }
+          }
+          donePosUpdate = true;
+          if (dice !== 6 && !this.collision(arrPiece)) {
+            incrActPlayer();
+          } else if (dice === 6 && this.collision(arrPiece)) {
+            //Do nothing
+          }
+        }
+      }
+    }
+  }
